@@ -1,0 +1,196 @@
+
+
+MINISTERUL EDUCAŢIEI al REPUBLICII MOLDOVA
+UNIVERSITATEA TEHNICĂ a MOLDOVEI
+FACULTATEA CALCULATOARE, INFORMATICǍ şi MICROELECTRONICǍ
+Departamentul Ingineria Biomedicală
+
+
+
+
+
+Raport
+la Programarea Calculatoarelor 
+Tema: Utilizarea șirurilor de caractere
+
+
+
+
+Efectuat de st. gr. IBM-251, Batrîncea Daniel 
+Verificat, asistentă universitară: Rotari Augustina
+
+
+
+                                                              
+                                                                   Chişinǎu 2025
+
+
+Scopul lucrării
+	Scopul lucrării este de a familiariza studentul cu procesarea și utilizarea șirurilor de caractere, utilizând limbajul C.
+Sarcină:
+Fiecare student va alege DOAR 5 probleme (la alegere) din cele 40 pe care le va rezolva folosind funcții separate, care primește și returnează datele necesare, fără a repeta codul principal. Programul va afișa un meniu interactiv cu toate problemele, unde va permite utilizatorului să aleagă operația dorită. Rezultatul lucrării se va plasa într-un raport, unde va fi inclusă foaia de titlu și codul sursă a programului cu o poză de execuție a acestuia. 
+Scrieți un program C pentru a număra numărul total de cuvinte dintr-un șir. 
+Scrieți un program C pentru a număra numărul total de consoane dintr-un șir. 
+Scrieți un program C pentru a găsi prima apariție a unui caracter într-un șir dat. 
+Scrieți un program C pentru a număra aparițiile unui caracter dintr-un șir dat. 
+Scrieți un program C pentru a sorta cuvintele în ordine alfabetică, dintr-un șir dat.
+Codul sursă:
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void numarCuvinte() {
+    char s[1000];
+    int count = 0, i;
+
+    printf("Introduceti sirul: ");
+    getchar();
+    fgets(s, sizeof(s), stdin);
+
+    for (i = 0; s[i] != '\0'; i++) {
+        if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t') {
+            while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t') i++;
+            if (s[i] != '\0') count++;
+        }
+        else if (i == 0) count++;
+    }
+
+    printf("Numar total de cuvinte: %d\n", count);
+}
+
+void numarConsoane() {
+    char s[1000];
+    int count = 0, i;
+
+    printf("Introduceti sirul: ");
+    getchar();
+    fgets(s, sizeof(s), stdin);
+
+    for (i = 0; s[i] != '\0'; i++) {
+        char c = tolower(s[i]);
+        if (isalpha(c) && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
+            count++;
+        }
+    }
+
+    printf("Numar total de consoane: %d\n", count);
+}
+
+void primaAparitie() {
+    char s[1000], ch;
+    int i, pozitie = -1;
+
+    printf("Introduceti sirul: ");
+    getchar();
+    fgets(s, sizeof(s), stdin);
+
+    printf("Introduceti caracterul de cautat: ");
+    scanf_s(" %c", &ch, 1);
+
+    for (i = 0; s[i] != '\0'; i++) {
+        if (s[i] == ch) {
+            pozitie = i;
+            break;
+        }
+    }
+
+    if (pozitie != -1) {
+        printf("Prima aparitie la pozitia: %d\n", pozitie);
+    }
+    else {
+        printf("Caracterul nu a fost gasit.\n");
+    }
+}
+
+void numarAparitii() {
+    char s[1000], ch;
+    int count = 0, i;
+
+    printf("Introduceti sirul: ");
+    getchar();
+    fgets(s, sizeof(s), stdin);
+
+    printf("Introduceti caracterul: ");
+    scanf_s(" %c", &ch, 1);
+
+    for (i = 0; s[i] != '\0'; i++) {
+        if (s[i] == ch) {
+            count++;
+        }
+    }
+
+    printf("Caracterul '%c' apare de %d ori.\n", ch, count);
+}
+
+void sortareCuvinte() {
+    char s[1000], cuvinte[100][100], temp[100];
+    int i, j, k, n = 0;
+
+    printf("Introduceti sirul: ");
+    getchar();
+    fgets(s, sizeof(s), stdin);
+
+    i = 0;
+    while (s[i] != '\0' && s[i] != '\n') {
+        while (s[i] == ' ' && s[i] != '\0') i++;
+
+        if (s[i] == '\0' || s[i] == '\n') break;
+
+        j = 0;
+        while (s[i] != ' ' && s[i] != '\0' && s[i] != '\n') {
+            cuvinte[n][j++] = s[i++];
+        }
+        cuvinte[n][j] = '\0';
+        n++;
+    }
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (strcmp(cuvinte[i], cuvinte[j]) > 0) {
+                strcpy_s(temp, sizeof(temp), cuvinte[i]);
+                strcpy_s(cuvinte[i], sizeof(cuvinte[i]), cuvinte[j]);
+                strcpy_s(cuvinte[j], sizeof(cuvinte[j]), temp);
+            }
+        }
+    }
+
+    printf("Cuvinte sortate:\n");
+    for (i = 0; i < n; i++) {
+        printf("%s\n", cuvinte[i]);
+    }
+}
+
+int main() {
+    int optiune;
+
+    do {
+        printf("\n=== MENIU ===\n");
+        printf("1. Numar total de cuvinte dintr-un sir\n");
+        printf("2. Numar total de consoane dintr-un sir\n");
+        printf("3. Prima aparitie a unui caracter\n");
+        printf("4. Numar aparitii ale unui caracter\n");
+        printf("5. Sortare cuvinte in ordine alfabetica\n");
+        printf("0. Iesire\n");
+        printf("Alegerea dumneavoastra: ");
+        scanf_s("%d", &optiune);
+
+        switch (optiune) {
+        case 1: numarCuvinte(); break;
+        case 2: numarConsoane(); break;
+        case 3: primaAparitie(); break;
+        case 4: numarAparitii(); break;
+        case 5: sortareCuvinte(); break;
+        case 0: printf("La revedere!\n"); break;
+        default: printf("Optiune invalida!\n");
+        }
+    } while (optiune != 0);
+
+    return 0;
+}
+ 
+Figura 1.1 Meniul cu cele 5 probleme
+
+
+        
+Concluzii:
+Prin acest program am învățat să structurez un proiect C în funcții separate pentru fiecare problemă, implementând un meniu interactiv care gestionează diverse operații pe șiruri de caractere, cum ar fi numărarea cuvintelor și a consoanelor, căutarea și numărarea caracterelor, precum și sortarea alfabetică a cuvintelor, ceea ce a consolidat abilitățile de manipulare a șirurilor, utilizarea funcțiilor standard din bibliotecile <stdio.h>, <string.h> și <ctype.h>, și gestionarea intrării/ieșirii utilizatorului într-o manieră modulară și organizată.
