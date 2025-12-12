@@ -1,0 +1,96 @@
+
+
+MINISTERUL EDUCAŢIEI al REPUBLICII MOLDOVA
+UNIVERSITATEA TEHNICĂ a MOLDOVEI
+FACULTATEA CALCULATOARE, INFORMATICǍ şi MICROELECTRONICǍ
+Departamentul Ingineria Biomedicală
+
+
+
+
+
+Raport
+la Programarea Calculatoarelor 
+Tema: Introducere în limbajul de programare C
+
+
+
+
+Efectuat de st. gr. IBM-251, Batrîncea Daniel 
+Verificat, asistentă universitară: Rotari Augustina
+
+
+
+                                                              
+                                                                   Chişinǎu 2025
+
+Scopul lucrării
+	Scopul lucrării este de a familiariza studentul cu limbajul C și cu operațiile aritmetice și logice ce pot fi efectuate în limbajul C. În această lucrare se va studia toți operatorii aritmetici și logici și funcțiile de intrare și ieșire ( scanf, printf).          
+Problema
+	Să se afișeze rezultatul calcului a unui set de expresii aritmetice/logice în care se implică operatorii următori:
+1.Operatori aritmetici: +,-,*,/,%, ++, --
+2. Funcțiile matematice: sqrt, log, pow, abs, (și alte funcții la dorință )
+3. Operatori logici: <,>,<=,!=,==,>=,&&,||
+4. Tipurile de date: char, double, float, int, long int, unsinged int, short
+ Codul sursă:
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main() {
+	int a = 10;
+	float b = 5.5;
+	double c = 2.3456;
+	char ch = 'A';
+	long int d = 100000L;
+	unsigned int e = 42;
+	short f = -12;
+
+	printf("Tipuri de date:\n");
+	printf("int a = %d\n", a);
+	printf("float b = %f\n", b);
+	printf("double c = %lf\n", c);
+	printf("char ch = %c\n", ch);
+	printf("long int d = %ld\n", d);
+	printf("unsigned int e = %u\n", e);
+	printf("short f = %d\n\n", f);
+
+	int x = 7, y = 3;
+
+	printf("Operatori aritmetici:\n");
+	printf("x + y = %d\n", x + y);
+	printf("x - y = %d\n", x - y);
+	printf("x * y = %d\n", x * y);
+	printf("x / y = %d (impartire intre int)\n", x / y);
+	printf("x %% y = %d (restul impartirii)\n", x % y);
+
+	printf("x++ = %d (foloseste apoi mareste)\n", x++);
+	printf("Acum x = %d\n", x);
+	printf("++x = %d (mareste apoi foloseste)\n\n", ++x);
+
+	printf("Functii matematice:\n");
+	printf("sqrt(16) = %lf\n", sqrt(16));
+	printf("pow(2, 3) = %lf\n", pow(2, 3));
+	printf("log(1) = %lf\n", log(1));
+	printf("abs(-10) = %d\n\n", abs(-10));
+
+	printf("Operatori logici si relationali:\n");
+	printf("(x > y) = %d\n", (x > y));
+	printf("(x < y) = %d\n", (x < y));
+	printf("(x == y) = %d\n", (x == y));
+	printf("(x != y) = %d\n", (x != y));
+	printf("(x >= y) = %d\n", (x >= y));
+	printf("(x <= y) = %d\n", (x <= y));
+	printf("(x > 0 && y > 0) = %d\n", (x > 0 && y > 0));
+	printf("(x > 0 || y < 0) = %d\n\n", (x > 0 || y < 0));
+	return 0;
+}
+Rezultatele programului:
+ 
+Figura 1.1 Rezultatele programului
+
+
+Concluzii:
+În urma acestei lucrări am învățat să folosesc limbajul de programare C pentru a lucra cu tipuri de date de bază (int, float, double, char, long int, unsigned int, short) și pentru a le afișa corect cu ajutorul funcțiilor printf și scanf. Am înțeles diferența dintre operatorii aritmetici (+, -, *, /, %, ++, --) și operatorii logici/relaționali (<, >, <=, >=, ==, !=, &&, ||) și cum aceștia returnează rezultate numerice (0 sau 1).
+De asemenea, am folosit funcții matematice din librăria math.h precum sqrt, pow, log, dar și funcția abs din stdlib.h, învățând că unele dintre ele necesită legarea librăriei matematice (-lm) la compilare. Am înțeles și rolul librăriilor (stdio.h, math.h, stdlib.h) care ne pun la dispoziție funcții gata făcute, precum și faptul că operatorii pot fi unari, binari sau ternari, în funcție de câți operanzi folosesc. Astfel, această lucrare m-a ajutat să mă familiarizez cu structura de bază a unui program C, să compilez și să rulez un cod simplu și să înțeleg cum se folosesc operatorii, funcțiile și tipurile de date primitive în acest limbaj.
+
