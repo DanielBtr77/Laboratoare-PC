@@ -1,0 +1,135 @@
+
+
+MINISTERUL EDUCAŢIEI al REPUBLICII MOLDOVA
+UNIVERSITATEA TEHNICĂ a MOLDOVEI
+FACULTATEA CALCULATOARE, INFORMATICǍ şi MICROELECTRONICǍ
+Departamentul Ingineria Biomedicală
+
+
+
+
+
+Raport
+la Programarea Calculatoarelor 
+Tema: Prelucrarea tablourilor bidimensionale în limbajul C
+
+
+
+
+Efectuat de st. gr. IBM-251, Batrîncea Daniel 
+Verificat, asistentă universitară: Rotari Augustina
+
+
+
+                                                              
+                                                                   Chişinǎu 2025
+
+
+Scopul lucrării
+	Aprofundarea cunoștințelor privind structurile de date de tip tablou bidimensional și dezvoltarea abilităților practice de programare în limbajul C prin implementarea algoritmilor de prelucrare a acestora. Lucrarea urmărește înțelegerea modului de declarare, inițializare și accesare a elementelor tablourilor bidimensionale, precum și aplicarea operațiilor fundamentale de citire, afișare, modificare, căutare și sortare a datelor stocate. De asemenea, scopul include dobândirea deprinderilor de analiză și optimizare a algoritmilor, utilizarea corectă a indicatorilor și a adresării în memorie, pentru a asigura eficiența și claritatea programelor dezvoltate.
+Sarcină:
+Pentru tabloul bidimensional dat din n linii şi m coloane:
+Varianta 1. Să se determine produsul elementelor nenule din fiecare coloană și numărul elementelor negative de pe diagonala principală.
+Codul sursă CHAT-GPT:
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    printf("Introduceti numarul de linii (n): ");
+    scanf_s("%d", &n);
+    printf("Introduceti numarul de coloane (m): ");
+    scanf_s("%d", &m);
+
+    int A[50][50]; // presupunem un maxim de 50x50
+    printf("Introduceti elementele matricei:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("A[%d][%d] = ", i, j);
+            scanf_s("%d", &A[i][j]);
+        }
+    }
+
+    // 1️⃣ Produsul elementelor nenule din fiecare coloana
+    for (int j = 0; j < m; j++) {
+        int produs = 1;
+        int existaNenul = 0; // verificăm dacă există cel puțin un element nenul
+        for (int i = 0; i < n; i++) {
+            if (A[i][j] != 0) {
+                produs *= A[i][j];
+                existaNenul = 1;
+            }
+        }
+        if (existaNenul)
+            printf("Produsul elementelor nenule din coloana %d este: %d\n", j, produs);
+        else
+            printf("Coloana %d contine doar zerouri.\n", j);
+    }
+
+    // 2️⃣ Numărul elementelor negative de pe diagonala principală
+    int countNeg = 0;
+    for (int i = 0; i < n && i < m; i++) {
+        if (A[i][i] < 0)
+            countNeg++;
+    }
+
+    printf("Numarul elementelor negative de pe diagonala principala este: %d\n", countNeg);
+
+    return 0;
+}
+ 
+                                                Figura 1.1 Rezultatele programului lui CHAT-GPT
+
+
+Codul meu:
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    int a[20][20];
+    int i, j;
+    int neg = 0;
+
+    printf("n=");
+    scanf_s("%d", &n);
+    printf("m=");
+    scanf_s("%d", &m);
+
+    printf("Elemente:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < m; j++) {
+            scanf_s("%d", &a[i][j]);
+        }
+    }
+
+    for (j = 0; j < m; j++) {
+        int p = 1;
+        for (i = 0; i < n; i++) {
+            if (a[i][j] != 0) {
+                p = p * a[i][j];
+            }
+        }
+        printf("Col %d produs = %d\n", j, p);
+    }
+
+    for (i = 0; i < n; i++) {
+        if (i < m) {
+            if (a[i][i] < 0) {
+                neg = neg + 1;
+            }
+        }
+    }
+
+    printf("Negativ pe diagonala = %d\n", neg);
+
+    return 0;
+}
+                 
+                                                Figura 1.2 Rezultatul programului meu
+
+Analiza comparativa:
+Comparând cele două programe, se observă diferențe clare între modul în care gândește o inteligență artificială și modul în care abordează problema un student. Codul generat de AI este mai structurat, mai compact și folosește optimizări implicite: variabile bine plasate, verificări suplimentare și o organizare logică mai eficientă. AI-ul tinde să anticipeze greșeli posibile și să le elimine din start, pentru că pornește de la modele generale și exemple numeroase.
+În schimb, celălalt program reflectă gândirea intuitivă a unui student începător. Pașii sunt mai simpli, mai direcți, iar soluția urmează ordinea în care cineva își imaginează rezolvarea, nu neapărat cea mai eficientă structură. Uneori apar pași redundanți sau variabile folosite numai pentru claritate, ceea ce face codul mai ușor de urmărit, dar mai puțin optimizat.
+Prin comparație, AI-ul gândește global și caută soluția cea mai „curată”, pe când omul gândește local, pas cu pas. Această diferență explică de ce cele două programe arată diferit, deși rezolvă aceeași problemă.
+
+Concluzii:
+În urma rezolvării problemei, am înțeles mai bine modul de lucru cu tablourile bidimensionale: cum se declară, cum se parcurg cu bucle imbricate, cum se accesează elementele pe linii și coloane și cum se pot realiza operații specifice precum calculul unui produs pe fiecare coloană sau analiza elementelor de pe diagonala principală. De asemenea, comparând două moduri diferite de a scrie același program, am observat că un om abordează problema în pași simpli și logici, în timp ce o inteligență artificială caută automat soluția mai optimizată și mai generalizată. Această diferență evidențiază stiluri distincte de gândire, dar ambele contribuie la înțelegerea mai profundă a programării și a modului în care pot fi construite soluții diverse pentru aceeași sarcină.
