@@ -1,0 +1,1123 @@
+MINISTERUL EDUCAŢIEI al REPUBLICII MOLDOVA
+UNIVERSITATEA TEHNICĂ a MOLDOVEI
+FACULTATEA CALCULATOARE, INFORMATICǍ şi MICROELECTRONICǍ
+Departamentul Ingineria Biomedicală
+
+
+
+
+
+Raport
+la Programarea Calculatoarelor 
+Tema: Instrucțiuni de ramificare și ciclice
+
+
+
+
+Efectuat de st. gr. IBM-251, Batrîncea Daniel 
+Verificat, asistentă universitară: Rotari Augustina
+
+
+
+                                                              
+                                                                   Chişinǎu 2025
+
+Scopul lucrării
+	Scopul lucrării este de a familiariza studentul cu instrucțiunile de ramificare și ciclice a limbajului C.
+Probleme pentru instrucțiuni de ramificare:
+1.	Scrieți un program C pentru a găsi maxim între două numere.
+Codul sursă 1:
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    printf("Introduceti doua numere: ");
+    scanf_s("%d %d", &a, &b);
+
+    if (a > b) {
+        printf("Maximul este: %d\n", a);
+    }
+    else {
+        printf("Maximul este: %d\n", b);
+    }
+
+    return 0;
+}
+ 
+Figura 1.1 Maximul între 2 numere
+2.	Scrieți un program C pentru a găsi maxim între trei numere. 
+Codul sursă:
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Introduceti trei numere: ");
+    scanf_s("%d %d %d", &a, &b, &c);
+
+    if (a >= b && a >= c)
+        printf("Maximul este: %d\n", a);
+    else if (b >= a && b >= c)
+        printf("Maximul este: %d\n", b);
+    else
+        printf("Maximul este: %d\n", c);
+
+    return 0;
+}
+ 
+Figura 1.2 Maximul între 3 numere
+3.	Scrieți un program C pentru a verifica dacă un număr este negativ, pozitiv sau zero.
+Codul sursă 3:
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Introduceti un numar: ");
+    scanf_s("%d", &n);
+
+    if (n > 0)
+        printf("Numarul este pozitiv.\n");
+    else if (n < 0)
+        printf("Numarul este negativ.\n");
+    else
+        printf("Numarul este zero.\n");
+
+    return 0;
+}
+ 
+Figura 1.3 Număr negativ, pozitiv sau zero
+4.	Scrieți un program C pentru a verifica dacă un număr este divizibil cu 5 și 11 sau nu.
+Codul sursă 3:
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Introduceti un numar: ");
+    scanf_s("%d", &n);
+
+    if (n % 5 == 0 && n % 11 == 0)
+        printf("Numarul este divizibil cu 5 si 11.\n");
+    else
+        printf("Numarul NU este divizibil cu 5 si 11.\n");
+
+    return 0;
+}
+ 
+Figura 1.4 Număr divizibil cu 5 și 11
+     5.  Scrieți un program C pentru a verifica dacă un număr este par sau impar.
+Codul sursă 5:
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Introduceti un numar: ");
+    scanf_s("%d", &n);
+
+    if (n % 2 == 0)
+        printf("Numarul este par.\n");
+    else
+        printf("Numarul este impar.\n");
+
+    return 0;
+}
+ 
+Figura 1.5 Număr par sau impar
+      6. Scrieți un program C pentru a verifica dacă un an este bisect sau nu.
+Codul sursă 6:
+#include <stdio.h>
+
+int main() {
+    int an;
+
+    printf("Introduceti un an: ");
+    scanf_s("%d", &an);
+
+	if ((an % 4 == 0 && an % 100 != 0) || (an % 400 == 0))
+        printf("Anul este bisect.\n");
+    else
+        printf("Anul NU este bisect.\n");
+
+    return 0;
+}
+ 
+Figura 1.6 An bisect sau nu
+      7. Scrieți un program C pentru a verifica dacă un caracter este sau nu alfabet.
+Codul sursă 7:
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    printf("Introduceti un caracter: ");
+    scanf_s(" %c", &ch, 1);  
+
+    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+        printf("Caracterul este alfabet.\n");
+    else
+        printf("Caracterul NU este alfabet.\n");
+
+    return 0;
+}
+ 
+Figura 1.7 Caracter alfabet sau nu
+   8. Scrieți un program C pentru a introduce orice alfabet și verificați dacă este vocală sau consoană.
+Codul sursă 8:
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    printf("Introduceti o litera: ");
+    scanf_s(" %c", &ch, 1); 
+
+    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+            ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+            printf("Litera este vocala.\n");
+        else
+            printf("Litera este consoana.\n");
+    }
+    else {
+        printf("Nu ati introdus o litera.\n");
+    }
+
+    return 0;
+}
+ 
+Figura 1.8 Verificarea caracterului dacă este o vocală
+   9. Scrieți un program C pentru a introduce orice caracter și verificați dacă este alfabet, cifră sau caracter special.
+Codul sursă 9:
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    printf("Introduceti un caracter: ");
+    scanf_s(" %c", &ch, 1); // buffer = 1 pentru %c
+
+    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+        printf("Caracterul este alfabet.\n");
+    else if (ch >= '0' && ch <= '9')
+        printf("Caracterul este cifra.\n");
+    else
+        printf("Caracterul este caracter special.\n");
+
+    return 0;
+}
+ 
+Figura 1.9 Alfabet, cifră sau caracter special
+   10. Scrieți un program C pentru a verifica dacă un caracter este cu majuscule sau minuscule.
+Codul sursă 10:
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    printf("Introduceti o litera: ");
+    scanf_s(" %c", &ch, 1);
+
+    if (ch >= 'A' && ch <= 'Z')
+        printf("Litera este majuscula.\n");
+    else if (ch >= 'a' && ch <= 'z')
+        printf("Litera este minuscula.\n");
+    else
+        printf("Nu ati introdus o litera.\n");
+
+    return 0;
+}
+ 
+Figura 2.0 Caracter majuscul sau minuscul
+   11. Scrieți un program C pentru a introduce numărul săptămânii și a imprima ziua săptămânii.
+Codul sursă 11:
+#include <stdio.h>
+
+int main() {
+    int zi;
+
+    printf("Introduceti numarul saptamanii (1-7): ");
+    scanf_s("%d", &zi);
+
+    if (zi == 1) printf("Luni\n");
+    else if (zi == 2) printf("Marti\n");
+    else if (zi == 3) printf("Miercuri\n");
+    else if (zi == 4) printf("Joi\n");
+    else if (zi == 5) printf("Vineri\n");
+    else if (zi == 6) printf("Sambata\n");
+    else if (zi == 7) printf("Duminica\n");
+    else printf("Numar invalid!\n");
+
+    return 0;
+}
+ 
+Figura 2.1 Numărul și ziua săptămânii
+   12. Scrieți un program C pentru a introduce numărul lunii și a imprima numărul de zile din luna respectivă.
+Codul sursă 12:
+#include <stdio.h>
+
+int main() {
+    int luna;
+
+    printf("Introduceti numarul lunii (1-12): ");
+    scanf_s("%d", &luna);
+
+    if (luna == 1 || luna == 3 || luna == 5 || luna == 7 ||
+        luna == 8 || luna == 10 || luna == 12)
+        printf("Luna are 31 de zile.\n");
+    else if (luna == 4 || luna == 6 || luna == 9 || luna == 11)
+        printf("Luna are 30 de zile.\n");
+    else if (luna == 2)
+        printf("Februarie are 28 sau 29 de zile (daca e an bisect).\n");
+    else
+        printf("Numar invalid!\n");
+
+    return 0;
+}
+ 
+Figura 2.2 Numărul lunii și numărul de zile
+   13. Scrieți un program C pentru a număra numărul total de note într-o anumită cantitate.
+Codul sursă 13:
+#include <stdio.h>
+
+int main() {
+    int n, i, nota;
+    int totalNote = 0;
+
+    printf("Cate note doriti sa introduceti? ");
+    scanf_s("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        printf("Introduceti nota %d: ", i);
+        scanf_s("%d", &nota);
+        totalNote++;
+    }
+
+    printf("Numarul total de note introduse este: %d\n", totalNote);
+
+    return 0;
+}
+ 
+Figura 2.3 Numărul total de note
+   14. Scrieți un program C pentru a introduce unghiurile unui triunghi și verificați dacă triunghiul este valid sau nu.
+Codul sursă 14:
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Introduceti cele 3 unghiuri ale triunghiului: ");
+    scanf_s("%d %d %d", &a, &b, &c);
+
+    if (a + b + c == 180 && a > 0 && b > 0 && c > 0)
+        printf("Triunghiul este valid.\n");
+    else
+        printf("Triunghiul NU este valid.\n");
+
+    return 0;
+}
+ 
+Figura 2.4 Validarea triunghiului în baza unghiurilor
+   15. Scrieți un program C pentru a introduce toate laturile unui triunghi și verificați dacă triunghiul este valid sau nu.
+Codul sursă 15:
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Introduceti cele 3 laturi ale triunghiului: ");
+    scanf_s("%d %d %d", &a, &b, &c);
+
+    if (a + b > c && a + c > b && b + c > a)
+        printf("Triunghiul este valid.\n");
+    else
+        printf("Triunghiul NU este valid.\n");
+
+    return 0;
+}
+ 
+Figura 2.5 Validarea triunghiului în baza laturilor
+   16. Scrieți un program C pentru a verifica dacă triunghiul este echilateral, isoscel sau triunghi scalen.
+Codul sursă 16:
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    printf("Introduceti cele 3 laturi ale triunghiului: ");
+    scanf_s("%d %d %d", &a, &b, &c);
+
+    if (a + b > c && a + c > b && b + c > a) {
+        if (a == b && b == c)
+            printf("Triunghiul este echilateral.\n");
+        else if (a == b || a == c || b == c)
+            printf("Triunghiul este isoscel.\n");
+        else
+            printf("Triunghiul este scalen.\n");
+    }
+    else {
+        printf("Triunghiul NU este valid.\n");
+    }
+
+    return 0;
+}
+ 
+Figura 2.6 Tipul triunghiului
+   17. Scrieți un program C pentru a găsi toate rădăcinile unei ecuații pătratice.
+Codul sursă 17:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double a, b, c, delta, x1, x2;
+
+    printf("Ecuatia de forma ax^2 + bx + c = 0\n");
+    printf("Introduceti a, b si c: ");
+    scanf_s("%lf %lf %lf", &a, &b, &c);
+
+    if (a == 0) {
+        printf("Nu este ecuatie de gradul 2.\n");
+    }
+    else {
+        delta = b * b - 4 * a * c;
+
+        if (delta > 0) {
+            x1 = (-b + sqrt(delta)) / (2 * a);
+            x2 = (-b - sqrt(delta)) / (2 * a);
+            printf("Doua radacini reale: x1 = %.2lf, x2 = %.2lf\n", x1, x2);
+        }
+        else if (delta == 0) {
+            x1 = -b / (2 * a);
+            printf("O radacina reala: x = %.2lf\n", x1);
+        }
+        else {
+            printf("Nu exista radacini reale.\n");
+        }
+    }
+
+    return 0;
+}
+ 
+Figura 2.7 Rădăcinile ecuației pătratice
+
+Probleme pentru instrucțiuni ciclice:
+   31. Scrieți un program C pentru a imprima toate numerele Armstrong cuprinse între 1 și n.
+Codul sursă 31:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n, num, temp, digit, nrCifre, suma;
+
+    printf("Introduceti limita superioara n: ");
+    scanf_s("%d", &n);
+
+    printf("Numere Armstrong intre 1 si %d sunt:\n", n);
+
+    for (num = 1; num <= n; num++) {
+        temp = num;
+        nrCifre = 0;
+        suma = 0;
+
+        // numaram cifrele
+        while (temp > 0) {
+            nrCifre++;
+            temp /= 10;
+        }
+
+        temp = num;
+        while (temp > 0) {
+            digit = temp % 10;
+            suma += (int)pow(digit, nrCifre);
+            temp /= 10;
+        }
+
+        if (suma == num) {
+            printf("%d ", num);
+        }
+    }
+
+    return 0;
+}
+ 
+Figura 2.8 Toate numerele Armstrong între 1 și n
+   32. Scrieți un program C pentru a verifica dacă un număr este sau nu un număr perfect. 
+Codul sursă 32:
+#include <stdio.h>
+
+int main() {
+    int n, i, suma = 0;
+
+    printf("Introduceti un numar: ");
+    scanf_s("%d", &n);
+
+    for (i = 1; i <= n / 2; i++) {
+        if (n % i == 0) {
+            suma += i;
+        }
+    }
+
+    if (suma == n)
+        printf("%d este un numar perfect.\n", n);
+    else
+        printf("%d NU este un numar perfect.\n", n);
+
+    return 0;
+}
+ 
+Figura 2.9 Verificarea numerelor perfecte
+   33. Scrieți un program C pentru a imprima toate numerele perfecte între 1 și n.
+Codul sursă 33:
+#include <stdio.h>
+
+int main() {
+    int n, i, j, suma;
+
+    printf("Introduceti limita superioara n: ");
+    scanf_s("%d", &n);
+
+    printf("Numere perfecte intre 1 si %d sunt:\n", n);
+
+    for (i = 1; i <= n; i++) {
+        suma = 0;
+        for (j = 1; j <= i / 2; j++) {
+            if (i % j == 0) {
+                suma += j;
+            }
+        }
+        if (suma == i) {
+            printf("%d ", i);
+        }
+    }
+
+    return 0;
+}
+ 
+Figura 3.0 Verificarea numerelor perfecte între 1 și n
+   34. Scrieți un program C pentru a verifica dacă un număr este sau nu un număr puternic.
+Codul sursă 34:
+#include <stdio.h>
+
+int estePuternic(int n) {
+    if (n == 1) return 1; // 1 este considerat puternic
+
+    int p;
+    for (p = 2; p * p <= n; p++) {
+        if (n % p == 0) {
+            // verificăm dacă p^2 divide n
+            if (n % (p * p) != 0)
+                return 0; // nu e puternic
+
+            // împărțim tot ce putem la p (ca să trecem peste multipli)
+            while (n % p == 0)
+                n /= p;
+        }
+    }
+    // dacă a mai rămas un factor prim, el trebuie să fi fost tratat deja
+    return 1;
+}
+
+int main() {
+    int n;
+    printf("Introduceti un numar: ");
+    scanf_s("%d", &n);
+
+    if (n <= 0) {
+        printf("Numarul trebuie sa fie intreg pozitiv.\n");
+        return 0;
+    }
+
+    if (estePuternic(n))
+        printf("%d este un numar puternic (powerful number).\n", n);
+    else
+        printf("%d NU este un numar puternic (powerful number).\n", n);
+
+    return 0;
+}
+ 
+Figura 3.1 Verificarea numerelor puternice
+
+35. Scrieți un program C pentru a imprima toate numerele puternice cuprinse între 1 și n. 	
+
+Codul sursă 35:
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+// Funcție pentru a verifica dacă un număr este prim
+bool estePrim(int numar) {
+    if (numar < 2)
+        return false;
+    for (int i = 2; i * i <= numar; i++) {
+        if (numar % i == 0)
+            return false;
+    }
+    return true;
+}
+
+// Funcție pentru a verifica dacă un număr este puternic
+bool estePuternic(int numar) {
+    if (numar == 1)
+        return true; // 1 este considerat puternic
+
+    for (int p = 2; p <= numar; p++) {
+        if (estePrim(p)) {
+            if (numar % p == 0) {
+                if (numar % (p * p) != 0)
+                    return false;
+            }
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    printf("Introduceti limita superioara n: ");
+    scanf_s("%d", &n);
+
+    printf("Numerele puternice intre 1 si %d sunt: ", n);
+    for (int i = 1; i <= n; i++) {
+        if (estePuternic(i))
+            printf("%d ", i);
+    }
+
+    printf("\n");
+    return 0;
+}
+ 
+Figura 3.2 Verificarea numerelor puternice între 1 și n
+36. Scrieți un program C pentru a imprima seria Fibonacci până la n termeni. 
+Codul sursă 36:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int t1 = 0, t2 = 1, urm;
+
+    printf("Introduceti numarul de termeni: ");
+    scanf_s("%d", &n);
+
+    printf("Seria Fibonacci pana la %d termeni:\n", n);
+
+    for (i = 1; i <= n; i++) {
+        printf("%d ", t1);
+        urm = t1 + t2;
+        t1 = t2;
+        t2 = urm;
+    }
+
+    return 0;
+}
+ 
+Figura 3.3 Seria Fibonacci până la n
+
+37. Scrieți un program C pentru a găsi complementul unui număr binar. 
+Codul sursă 37:
+#include <stdio.h>
+
+int main() {
+    long long binar, complement = 0;
+    int bit, poz = 1;
+
+    printf("Introduceti un numar binar: ");
+    scanf_s("%lld", &binar);
+
+    while (binar != 0) {
+        bit = binar % 10;
+        bit = (bit == 0) ? 1 : 0;
+        complement += bit * poz;
+        poz *= 10;
+        binar /= 10;
+    }
+
+    printf("Complementul este: %lld\n", complement);
+    return 0;
+}
+ 
+
+Figura 3.4 Complementul numărului binar
+
+   38. Scrieți un program C pentru a găsi complementul doi al unui număr binar.
+Codul sursă 38:
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char binar[64];
+    int i;
+    int carry = 1; // vrem să adăugăm 1 la complementul unu
+
+    printf("Introduceti un numar binar: ");
+    // scanf_s: primul argument format, apoi buffer, apoi dimensiunea bufferului
+    scanf_s("%s", binar, (unsigned)sizeof(binar));
+
+    // validare simpla: sa contina doar '0' si '1'
+    for (i = 0; binar[i] != '\0'; i++) {
+        if (binar[i] != '0' && binar[i] != '1') {
+            printf("Eroare: sirul contine caractere nenumerice (trebuie doar 0 si 1).\n");
+            return 0;
+        }
+    }
+
+    // complementul unu (flip bits)
+    for (i = 0; binar[i] != '\0'; i++) {
+        binar[i] = (binar[i] == '0') ? '1' : '0';
+    }
+
+    // adaugam 1 la dreapta (complementul doi)
+    for (i = (int)strlen(binar) - 1; i >= 0 && carry; i--) {
+        if (binar[i] == '0') {
+            binar[i] = '1';
+            carry = 0;
+        }
+        else { // binar[i] == '1'
+            binar[i] = '0';
+            carry = 1;
+        }
+    }
+
+    // daca mai avem carry = 1, trebuie sa inseram '1' la inceput
+    if (carry) {
+        // mutam sirul cu o pozitie la dreapta (atenție la dimensiune)
+        int len = (int)strlen(binar);
+        if (len + 1 >= (int)sizeof(binar)) {
+            printf("Eroare: numarul este prea lung pentru buffer.\n");
+            return 0;
+        }
+        for (i = len; i >= 0; i--) { // mutam si terminatorul '\0'
+            binar[i + 1] = binar[i];
+        }
+        binar[0] = '1';
+    }
+
+    printf("Complementul doi este: %s\n", binar);
+    return 0;
+}
+ 
+Figura 3.5 Complementul doi al numărului binar
+
+   39. Scrieți un program C pentru a converti sistemul de numere binare în octale.
+Codul sursă 39:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    long long binar;
+    int octal = 0, dec = 0, i = 0;
+
+    printf("Introduceti un numar binar: ");
+    scanf_s("%lld", &binar);
+
+    while (binar != 0) {
+        dec += (binar % 10) * pow(2, i);
+        binar /= 10;
+        i++;
+    }
+
+    i = 1;
+    while (dec != 0) {
+        octal += (dec % 8) * i;
+        dec /= 8;
+        i *= 10;
+    }
+
+    printf("Numarul in octal este: %d\n", octal);
+    return 0;
+}
+ 
+Figura 3.6 Convertirea din binar în octal
+   40. Scrieți un program C pentru a converti sistemul numeric binar în zecimal.
+Codul sursă 40:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    long long binar;
+    int decimal = 0, i = 0;
+
+    printf("Introduceti un numar binar: ");
+    scanf_s("%lld", &binar);
+
+    while (binar != 0) {
+        decimal += (binar % 10) * pow(2, i);
+        binar /= 10;
+        i++;
+    }
+
+    printf("Numarul in zecimal este: %d\n", decimal);
+    return 0;
+}
+ 
+Figura 3.7 Convertirea din binar în zecimal
+   41. Scrieți un program C pentru a converti sistemul numeric binar în hexazecimal.
+Codul sursă 41:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    long long binar;
+    int decimal = 0, i = 0;
+    char hex[20];
+    int j = 0, rest;
+
+    printf("Introduceti un numar binar: ");
+    scanf_s("%lld", &binar);
+
+    while (binar != 0) {
+        decimal += (binar % 10) * pow(2, i);
+        binar /= 10;
+        i++;
+    }
+
+    while (decimal != 0) {
+        rest = decimal % 16;
+        if (rest < 10)
+            hex[j++] = rest + '0';
+        else
+            hex[j++] = rest - 10 + 'A';
+        decimal /= 16;
+    }
+
+    printf("Numarul in hexazecimal este: ");
+    for (i = j - 1; i >= 0; i--)
+        printf("%c", hex[i]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 3.8 Convertirea din binar în hexazecimal
+42. Scrieți un program C pentru a converti sistemul de numere binare Octal. 
+Codul sursă 42:
+Similar cu 39?
+   43. Scrieți un program C pentru a converti sistemul numeric Octal în Decimal.
+Codul sursă 43:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int octal, decimal = 0, i = 0;
+
+    printf("Introduceti un numar octal: ");
+    scanf_s("%d", &octal);
+
+    while (octal != 0) {
+        decimal += (octal % 10) * pow(8, i);
+        octal /= 10;
+        i++;
+    }
+
+    printf("Numarul in zecimal este: %d\n", decimal);
+    return 0;
+}
+ 
+Figura 3.9 Convertirea din octal în decimal
+   44. Scrieți un program C pentru a converti sistemul de numere octal în hexazecimal.
+Codul sursă 44:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int octal, decimal = 0, i = 0, rest;
+    char hex[20];
+    int j = 0;
+
+    printf("Introduceti un numar octal: ");
+    scanf_s("%d", &octal);
+
+    while (octal != 0) {
+        decimal += (octal % 10) * pow(8, i);
+        octal /= 10;
+        i++;
+    }
+
+    while (decimal != 0) {
+        rest = decimal % 16;
+        if (rest < 10)
+            hex[j++] = rest + '0';
+        else
+            hex[j++] = rest - 10 + 'A';
+        decimal /= 16;
+    }
+
+    printf("Numarul in hexazecimal este: ");
+    for (i = j - 1; i >= 0; i--)
+        printf("%c", hex[i]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.0 Convertirea din octal în hexazecimal
+   45. Scrieți un program C pentru a converti sistemul numeric Zecimal în Binar.
+Codul sursă 45:
+#include <stdio.h>
+
+int main() {
+    int decimal, binar[32], i = 0;
+
+    printf("Introduceti un numar zecimal: ");
+    scanf_s("%d", &decimal);
+
+    if (decimal == 0) {
+        printf("0\n");
+        return 0;
+    }
+
+    while (decimal > 0) {
+        binar[i] = decimal % 2;
+        decimal /= 2;
+        i++;
+    }
+
+    printf("Numarul in binar este: ");
+    for (int j = i - 1; j >= 0; j--)
+        printf("%d", binar[j]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.1 Convertirea din zecimal în binar
+46. Scrieți un program C pentru a converti sistemul numeric Decimal în Octal. 
+Codul sursă 46:
+#include <stdio.h>
+
+int main() {
+    int decimal, octal[32], i = 0;
+
+    printf("Introduceti un numar zecimal: ");
+    scanf_s("%d", &decimal);
+
+    while (decimal != 0) {
+        octal[i++] = decimal % 8;
+        decimal /= 8;
+    }
+
+    printf("Numarul in octal este: ");
+    for (int j = i - 1; j >= 0; j--)
+        printf("%d", octal[j]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.2 Convertirea din decimal în octal
+   47. Scrieți un program C pentru a converti sistemul numeric Decimal în Hexadecimal.
+Codul sursă 47:
+#include <stdio.h>
+
+int main() {
+    int decimal, rest, i = 0;
+    char hex[20];
+
+    printf("Introduceti un numar zecimal: ");
+    scanf_s("%d", &decimal);
+
+    while (decimal != 0) {
+        rest = decimal % 16;
+        if (rest < 10)
+            hex[i++] = rest + '0';
+        else
+            hex[i++] = rest - 10 + 'A';
+        decimal /= 16;
+    }
+
+    printf("Numarul in hexazecimal este: ");
+    for (int j = i - 1; j >= 0; j--)
+        printf("%c", hex[j]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.3 Convertirea din decimal în hexadecimal
+    48. Scrieți un program C pentru a converti Hexadecimal în sistem de numere binare. 
+Codul sursă 48:
+
+#include <stdio.h>
+#include <string.h>
+
+void printHexAsBinaryChar(char c) {
+    switch (c) {
+    case '0': printf("0000"); break;
+    case '1': printf("0001"); break;
+    case '2': printf("0010"); break;
+    case '3': printf("0011"); break;
+    case '4': printf("0100"); break;
+    case '5': printf("0101"); break;
+    case '6': printf("0110"); break;
+    case '7': printf("0111"); break;
+    case '8': printf("1000"); break;
+    case '9': printf("1001"); break;
+    case 'A': case 'a': printf("1010"); break;
+    case 'B': case 'b': printf("1011"); break;
+    case 'C': case 'c': printf("1100"); break;
+    case 'D': case 'd': printf("1101"); break;
+    case 'E': case 'e': printf("1110"); break;
+    case 'F': case 'f': printf("1111"); break;
+    default: /* never reached if validat inainte */ break;
+    }
+}
+
+int main() {
+    char hex[65];
+    int i, len;
+
+    printf("Introduceti un numar hexazecimal (fara prefix 0x): ");
+    // scanf_s: primul param = format, al doilea = buffer, al treilea = dimensiunea bufferului
+    scanf_s("%s", hex, (unsigned)sizeof(hex));
+
+    len = (int)strlen(hex);
+    if (len == 0) {
+        printf("Sir gol.\n");
+        return 0;
+    }
+
+    // validare si afisare
+    for (i = 0; i < len; i++) {
+        char c = hex[i];
+        // validam caracterul
+        if (!((c >= '0' && c <= '9') ||
+            (c >= 'A' && c <= 'F') ||
+            (c >= 'a' && c <= 'f'))) {
+            printf("Eroare: caracter invalid '%c' in sir. Folositi doar 0-9, A-F sau a-f.\n", c);
+            return 0;
+        }
+    }
+
+    // Afișăm fiecare cifră hex ca 4 biți
+    printf("Echivalentul in binar este: ");
+    for (i = 0; i < len; i++) {
+        printHexAsBinaryChar(hex[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.4 Convertirea din hexadecimal în binar
+49. Scrieți un program C pentru a converti sistemul de numere hexazecimal în octal. 
+Codul sursă 49:
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char hex[65];
+    unsigned long long decimal = 0; 
+    int i, val;
+    int octal[100];
+    int k = 0;
+
+    printf("Introduceti un numar hexazecimal (fara prefix 0x): ");
+    scanf_s("%s", hex, (unsigned)sizeof(hex)); 
+
+    int len = (int)strlen(hex);
+    if (len == 0) {
+        printf("Sir gol.\n");
+        return 0;
+    }
+
+    for (i = 0; i < len; i++) {
+        char c = hex[i];
+        if (c >= '0' && c <= '9') val = c - '0';
+        else if (c >= 'A' && c <= 'F') val = c - 'A' + 10;
+        else if (c >= 'a' && c <= 'f') val = c - 'a' + 10;
+        else {
+            printf("Eroare: caracter invalid '%c'. Folositi doar 0-9, A-F sau a-f.\n", c);
+            return 0;
+        }
+
+      
+        decimal = decimal * 16ULL + (unsigned long long)val;
+    }
+
+    // decimal -> octal
+    if (decimal == 0) {
+        printf("Numarul in octal este: 0\n");
+        return 0;
+    }
+
+    while (decimal != 0) {
+        octal[k++] = (int)(decimal % 8ULL);
+        decimal /= 8ULL;
+        if (k >= (int)sizeof(octal) / sizeof(octal[0])) {
+            printf("Eroare: rezultatul octal este prea lung pentru buffer.\n");
+            return 0;
+        }
+    }
+
+    printf("Numarul in octal este: ");
+    for (i = k - 1; i >= 0; i--)
+        printf("%d", octal[i]);
+    printf("\n");
+
+    return 0;
+}
+ 
+Figura 4.5 Convertirea din hexadecimal în octal
+50. Scrieți un program C pentru a converti sistemul numeric hexazecimal în zecimal.
+Codul sursă 50:
+
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>  
+#include <ctype.h>
+
+int main() {
+    char hex[65];
+    unsigned long long decimal = 0;
+    int len, i, val;
+
+    printf("Introduceti un numar hexazecimal (fara prefix 0x): ");
+    
+    scanf_s("%s", hex, (unsigned)sizeof(hex));
+
+    len = (int)strlen(hex);
+    if (len == 0) {
+        printf("Sir gol.\n");
+        return 0;
+    }
+
+    for (i = 0; i < len; i++) {
+        char c = hex[i];
+        if (c >= '0' && c <= '9') val = c - '0';
+        else if (c >= 'A' && c <= 'F') val = c - 'A' + 10;
+        else if (c >= 'a' && c <= 'f') val = c - 'a' + 10;
+        else {
+            printf("Eroare: caracter invalid '%c'. Folositi doar 0-9, A-F sau a-f.\n", c);
+            return 0;
+        }
+
+        
+        if (decimal > (ULLONG_MAX - (unsigned long long)val) / 16ULL) {
+            printf("Eroare: conversia ar produce overflow (numar prea mare pentru unsigned long long).\n");
+            return 0;
+        }
+
+        decimal = decimal * 16ULL + (unsigned long long)val;
+    }
+
+    printf("Numarul in zecimal este: %llu\n", decimal);
+    return 0;
+}
+ 
+Figura 4.6 Convertirea din hexadecimal în decimal
+
+
+
+
+
+
+
+Concluzie:
+În urma rezolvării celor 17 probleme am învățat să folosim instrucțiunile de ramificare din limbajul C pentru a lua decizii în funcție de anumite condiții și să lucrăm cu tipuri de date de bază precum numere întregi, numere reale și caractere. Am văzut cum se verifică proprietăți simple ale numerelor, de exemplu dacă sunt pare sau impare, pozitive sau negative, sau dacă sunt divizibile cu alte valori, dar și situații mai complexe cum ar fi verificarea validității unui triunghi sau determinarea tipului acestuia. De asemenea, am lucrat cu caractere pentru a identifica dacă sunt litere, vocale, consoane, majuscule sau minuscule și am învățat să folosim operatorii logici pentru a combina mai multe condiții. Toate aceste exerciții ne-au ajutat să consolidăm bazele programării în C și să înțelegem mai bine modul în care programele reacționează diferit în funcție de datele introduse de utilizator. În urma rezolvării problemelor ciclice, am învățat să aplic structuri repetitive în limbajul C pentru a automatiza calcule și conversii între diferite sisteme de numerație. Am înțeles cum se pot combina buclele și instrucțiunile condiționale pentru a genera serii, a verifica proprietăți matematice ale numerelor și a transforma valori între baze numerice.
+
+
+
+
+
